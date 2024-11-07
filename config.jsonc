@@ -1,0 +1,29 @@
+{
+  "cell_size": 30,
+  "border_width": 5,
+  "separator_width": 2,
+  "frame": false,
+  "colors": {
+    "A": "none",
+    "B": "hsl(240,75%,50%)", // blue
+    "b": "hsl(240,75%,50%)", // blue
+    "S": "hsl(240,75%,50%)", // blue
+    "s": "hsl(240,75%,50%)", // blue
+    "E": "hsl(240,75%,50%)", // blue
+    "e": "hsl(240,75%,50%)", // blue
+    "R": "hsl(0  ,75%,50%)", // red
+    "r": "hsl(0  ,75%,50%)", // red
+    "Y": "hsl(60 ,75%,50%)", // yellow
+    "y": "hsl(60 ,75%,50%)", // yellow
+    "o": "hsl(40 ,75%,50%)", // organge
+    "O": "hsl(40 ,75%,50%)", // organge
+    "c": "hsl(180,75%,50%)", // cyan
+    "C": "hsl(180,75%,50%)", // cyan
+    "P": "hsl(280,75%,50%)", // purple
+    "p": "hsl(280,75%,50%)", // purple
+    "G": "hsl(120,75%,50%)", // green
+    "g": "hsl(120,75%,50%)", // green
+    " ": "white",
+    "X": "none"
+  }
+}
