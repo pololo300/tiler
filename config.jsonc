@@ -23,6 +23,10 @@
     "p": "hsl(280,75%,50%)", // purple
     "G": "hsl(120,75%,50%)", // green
     "g": "hsl(120,75%,50%)", // green
+    "i": "#778899", // gray
+    "I": "#778899", // gray
+    "w": "#ffffff", // gray
+    "W": "#ffffff", // gray
     " ": "white",
     "X": "none"
   }
