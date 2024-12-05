@@ -3,6 +3,7 @@
   "border_width": 5,
   "separator_width": 2,
   "frame": false,
+  "grid": false,
   "colors": {
     "A": "none",
     "B": "hsl(240,75%,50%)", // blue
@@ -25,8 +26,10 @@
     "g": "hsl(120,75%,50%)", // green
     "i": "#778899", // gray
     "I": "#778899", // gray
-    "w": "#ffffff", // gray
-    "W": "#ffffff", // gray
+    "d": "#2d3133", // dark gray
+    "D": "#2d3133", // dark gray
+    "w": "#ffffff", // white
+    "W": "#ffffff", // whte
     " ": "white",
     "X": "none"
   }

@@ -1,6 +1,5 @@
 use serde_json::Result;
 use svg::Document;
-use svg2pdf::usvg::fontdb;
 use svg2pdf::{ConversionOptions, PageOptions};
 
 pub fn write_pdf(svg: &Document, out_path: &str) -> Result<()> {

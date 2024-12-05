@@ -5,7 +5,7 @@ pub struct CharGrid {
 }
 
 impl CharGrid {
-    fn cells(&self) -> impl Iterator<Item = &char> {
+    fn _cells(&self) -> impl Iterator<Item = &char> {
         self.grid.iter().flat_map(|row| row.iter())
     }
 }
@@ -15,6 +15,7 @@ use serde::Deserialize;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::Read;
+use std::path::PathBuf;
 
 impl From<String> for CharGrid {
     fn from(input: String) -> Self {
@@ -46,28 +47,24 @@ impl From<String> for CharGrid {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct Config {
     pub cell_size: u32,
     pub border_width: u32,
     pub separator_width: u32,
     pub frame: bool,
-    pub colors: HashMap<char, String>, // Map characters to colors
+    pub grid: bool,
+    pub colors: HashMap<char, String>,
 }
 
 impl Config {
-    pub fn load_config(file_path: &str) -> Config {
-        // Open the file
+    pub fn load_config(file_path: &PathBuf) -> Config {
         let file = File::open(file_path).expect("Failed to open the config file");
-
-        // Wrap the file reader with StripComments to remove comments
         let mut stripped_content = String::new();
         let mut reader = StripComments::new(file);
         reader
             .read_to_string(&mut stripped_content)
             .expect("Failed to read and strip comments from the JSONC file");
-
-        // Parse the JSON
         serde_json::from_str(&stripped_content).expect("Failed to parse the JSON config")
     }
 }

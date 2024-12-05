@@ -1,6 +1,7 @@
 use crate::CharGrid;
 use svg::node::element::{Line, Rectangle};
 use svg::Document;
+use unicode_normalization::UnicodeNormalization;
 
 use crate::input::Config;
 
@@ -30,8 +31,8 @@ impl Renderer {
                 if c == 'X' {
                     continue;
                 }
-                let color = self.conf.colors.get(&c).unwrap().as_str();
-                doc = doc.add(self.add_cell(x as i32, y as i32, color));
+
+                doc = doc.add(self.paint_cell(x as i32, y as i32, c));
             }
         }
 
@@ -75,7 +76,7 @@ impl Renderer {
             }
         }
 
-        // margin borders
+        // border frame
         if self.conf.frame {
             doc = doc
                 .add(self.border(0, 0, 0, grid.height as i32))
@@ -109,18 +110,21 @@ impl Renderer {
             .set("stroke-width", self.conf.border_width)
     }
 
-    fn add_cell(&self, x: i32, y: i32, color: &str) -> Rectangle {
+    fn paint_cell(&self, x: i32, y: i32, c: char) -> Rectangle {
+        let without_accent = c.nfd().next().unwrap_or(c);
+        let color = self.conf.colors.get(&without_accent).unwrap().as_str();
         let mut rect = Rectangle::new()
             .set("x", x as u32 * self.conf.cell_size + self.conf.border_width)
             .set("y", y as u32 * self.conf.cell_size + self.conf.border_width)
             .set("width", self.conf.cell_size)
             .set("height", self.conf.cell_size)
             .set("fill", color);
-        if self.conf.frame || (color != "none" && color != "white") {
+        if self.conf.grid || (color != "none" && color != "white") {
             rect = rect
                 .set("stroke", "black")
                 .set("stroke-width", self.conf.separator_width);
         }
+
         rect
     }
 }
