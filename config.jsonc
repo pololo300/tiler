@@ -31,6 +31,8 @@
     "w": "#ffffff", // white
     "W": "#ffffff", // whte
     " ": "white",
-    "X": "none"
+    "X": "none",
+    ".": "dot",
+    "·": "dot"
   }
 }

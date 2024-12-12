@@ -42,7 +42,7 @@ fn main() {
     let mut conf = Config::load_config(&config_path);
     conf.grid = cli.grid;
     conf.frame = cli.frame;
-    let render = Renderer::new(conf.clone());
+    let mut render = Renderer::new(conf.clone());
 
     for input_file in &cli.input {
         let grid: CharGrid = fs::read_to_string(input_file)

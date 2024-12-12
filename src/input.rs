@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub struct CharGrid {
     pub grid: Vec<Vec<char>>, // 2D vector to hold the grid of characters
     pub width: usize,         // Width of the grid
@@ -7,6 +8,10 @@ pub struct CharGrid {
 impl CharGrid {
     fn _cells(&self) -> impl Iterator<Item = &char> {
         self.grid.iter().flat_map(|row| row.iter())
+    }
+
+    pub fn get(&self, x: usize, y: usize) -> char {
+        self.grid[x][y]
     }
 }
 
